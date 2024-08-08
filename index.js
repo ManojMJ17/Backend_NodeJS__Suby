@@ -9,7 +9,7 @@ const exp = require("constants");
 
 const app = express();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 dotEnv.config();
 
@@ -21,7 +21,6 @@ mongoose
 	.catch((err) => console.log(err));
 
 app.use(express.json());
-
 app.use("/vendor", vendorRoutes);
 app.use("/firm", firmRoutes);
 app.use("/product", productRoutes);
@@ -31,6 +30,6 @@ app.listen(PORT, () => {
 	console.log(`Server Eunning in ${PORT}`);
 });
 
-app.use("/home", (req, res) => {
-	res.send("Hi");
+app.use("/", (req, res) => {
+	res.send(`<h1>Welcome To Suby`);
 });
