@@ -6,12 +6,14 @@ const firmRoutes = require("./routes/firmRoutes");
 const productRoutes = require("./routes/productRoutes");
 const path = require("path");
 const exp = require("constants");
+const cors = require("cors");
 
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 
 dotEnv.config();
+app.use(cors());
 
 mongoose
 	.connect(process.env.MONGO_URI)
